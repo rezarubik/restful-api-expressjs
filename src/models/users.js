@@ -4,8 +4,8 @@ const getAllUsers = () => {
   return dbPool.execute(sqlQuery);
 };
 
-const createNewUser = (body) => {
-  const sqlQuery = `insert into users (name, email, address) values ('${body.name}', '${body.email}', '${body.address}')`;
+const createNewUser = (body, password) => {
+  const sqlQuery = `insert into users (name, email, password, address) values ('${body.name}', '${body.email}', '${password}', '${body.address}')`;
   return dbPool.execute(sqlQuery);
 };
 
@@ -19,9 +19,16 @@ const deleteUser = (idUser) => {
   return dbPool.execute(sqlQuery);
 };
 
+const checkUser = (body) => {
+  const sqlQuery = `select * from users where email = '${body.email}'`;
+  console.log("execute", dbPool.execute(sqlQuery));
+  return dbPool.execute(sqlQuery);
+};
+
 module.exports = {
   getAllUsers,
   createNewUser,
   updateUser,
   deleteUser,
+  checkUser,
 };

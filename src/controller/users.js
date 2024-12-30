@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const UsersModel = require("../models/users");
 const getAllUsers = async (req, res) => {
   try {
@@ -15,6 +16,7 @@ const getAllUsers = async (req, res) => {
 };
 const createNewUser = async (req, res) => {
   const { body } = req;
+  const hashedPassword = await bcrypt.hash(body.password, 10);
   if (!body.email || !body.name || !body.address) {
     return res.status(400).json({
       message: "Anda mengirimkan data yang salah",
@@ -22,14 +24,14 @@ const createNewUser = async (req, res) => {
     });
   }
   try {
-    await UsersModel.createNewUser(body);
+    await UsersModel.createNewUser(body, hashedPassword);
     res.status(201).json({
       message: "CREATE New User Success",
       data: body,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Server error",
+      message: "Server error where create new user",
       serverMessage: error,
     });
   }
