@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "481bb030-99ad-4e85-bced-2d9051aad968",
+		"name": "REST API Express.js",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "7973421"
+	},
+	"item": [
+		{
+			"name": "Create New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Deli\",\n    \"email\": \"deli@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:4000/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:4000/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:4000/"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Rezarubik\",\n    \"email\": \"rezarubik17@gmail.com\",\n    \"address\": \"Kalibata\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:4000/users/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:4000/users/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get File",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:4000/assets/ss.png"
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Photo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/Users/muhammadrezapahleviy/Downloads/FR022 - Form Clearance v4 030424 -  Muhammad Reza Pahlevi Y.pdf"
+						}
+					]
+				},
+				"url": "localhost:4000/upload"
+			},
+			"response": []
+		}
+	]
+}
