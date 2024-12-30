@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Deli\",\n    \"email\": \"deli@gmail.com\"\n}",
+					"raw": "{\n    \"name\": \"Deli 2\",\n    \"email\": \"deli2@gmail.com\",\n    \"password\": \"password\",\n    \"address\": \"Duren Sawit\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -25,11 +25,53 @@
 			"response": []
 		},
 		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Deli 3\",\n    \"email\": \"deli3@gmail.com\",\n    \"password\": \"password\",\n    \"address\": \"Duren Sawit\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:4000/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"deli3@gmail.com\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:4000/auth/login"
+			},
+			"response": []
+		},
+		{
 			"name": "Get All User",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzU1ODczOTIsImV4cCI6MTczNTU5MDk5Mn0.eqajYY1DsXDT8dGNdpGQKQ3WJFh0f5mZ2Qq71keqPAU"
+					}
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -69,11 +111,17 @@
 		{
 			"name": "Update User",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MzU1ODczOTIsImV4cCI6MTczNTU5MDk5Mn0.eqajYY1DsXDT8dGNdpGQKQ3WJFh0f5mZ2Qq71keqPAU"
+					}
+				},
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Rezarubik\",\n    \"email\": \"rezarubik17@gmail.com\",\n    \"address\": \"Kalibata\"\n}",
+					"raw": "{\n    \"name\": \"Deli Update\",\n    \"email\": \"deli-update@gmail.com\",\n    \"address\": \"Duren Sawit update\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
