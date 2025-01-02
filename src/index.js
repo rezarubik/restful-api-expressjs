@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const usersRoutes = require("./routes/users.js");
 const authRoutes = require("./routes/auth.js");
+const postRoutes = require("./routes/posts.js");
 const middlewareLogRequest = require("./middleware/logs.js");
 const { upload } = require("./middleware/multer.js");
 
@@ -24,6 +25,7 @@ app.use("/assets", express.static("public/images"));
 
 app.use("/users", usersRoutes);
 app.use("/auth", authRoutes);
+app.use("/posts", postRoutes);
 app.post("/upload", upload.single("photo"), (req, res) => {
   res.json({
     message: "Upload success",
