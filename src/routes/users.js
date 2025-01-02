@@ -13,6 +13,12 @@ router.post(
 // note: Read - GET
 router.get("/", AuthMiddleware.authenticateToken, UserController.getAllUsers);
 
+router.get(
+  "/profile",
+  AuthMiddleware.authenticateToken,
+  UserController.getProfile
+);
+
 // note: Update - PATCH
 router.patch(
   "/:idUser",

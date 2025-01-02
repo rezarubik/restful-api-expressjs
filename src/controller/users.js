@@ -1,18 +1,34 @@
 const bcrypt = require("bcrypt");
 const UsersModel = require("../models/users");
+const responseHelper = require("../utils/responseHelper");
 const getAllUsers = async (req, res) => {
-  try {
-    const [data] = await UsersModel.getAllUsers();
-    res.json({
-      message: "GET All Users",
-      data: data,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Server error",
-      serverMessage: error,
+  // try {
+  const [data] = await UsersModel.getAllUsers();
+  responseHelper.response(res, true, "GET All Users", data, 200);
+  // res.json({
+  //   message: "GET All Users",
+  //   data: data,
+  // });
+  // } catch (error) {
+  //   res.status(500).json({
+  //     message: "Server error",
+  //     serverMessage: error,
+  //   });
+  // }
+};
+const getProfile = async (req, res) => {
+  // todo: Get user auth from user login
+  const userEmail = req.user.auth.email;
+  const [user] = await UsersModel.getUserByEmail(userEmail);
+  if (user.length == 0) {
+    res.status(404).json({
+      message: "User not found",
     });
   }
+  res.status(201).json({
+    message: "Success get user",
+    data: user[0],
+  });
 };
 const searchUser = async (req, res) => {
   try {
@@ -97,4 +113,5 @@ module.exports = {
   updateUser,
   deleteUser,
   searchUser,
+  getProfile,
 };
