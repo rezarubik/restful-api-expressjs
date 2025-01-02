@@ -24,14 +24,17 @@ const login = async (req, res, next) => {
   console.log("email", body.email);
   try {
     const [user] = await UsersModel.checkUser(body);
-    console.log("password", body.password);
-    console.log("user", user[0]);
-    console.log("user.password", user[0].password);
-    if (!user)
-      return res.status(401).json({
+    // console.log("password", body.password);
+    // console.log("user", user);
+    // console.log("length user", user.length);
+    // console.log("user[0]", user[0]);
+    if (user.length == 0) {
+      return res.status(404).json({
         message: "User not found",
       });
+    }
     const matchPassword = await bcrypt.compare(body.password, user[0].password);
+    // console.log("user.password", user[0].password);
     if (!matchPassword)
       return res.status(401).json({
         message: "Invalid credentials / invalid password",

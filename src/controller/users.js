@@ -14,6 +14,27 @@ const getAllUsers = async (req, res) => {
     });
   }
 };
+const searchUser = async (req, res) => {
+  try {
+    const { body } = req;
+    console.log("body", body);
+    const [getUser] = await UsersModel.checkUser(body);
+    if (getUser.length == 0) {
+      res.status(404).json({
+        message: "User not found",
+      });
+    }
+    res.status(201).json({
+      message: "Success get user",
+      data: getUser[0],
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+      serverMessage: error,
+    });
+  }
+};
 const createNewUser = async (req, res) => {
   const { body } = req;
   const hashedPassword = await bcrypt.hash(body.password, 10);
@@ -75,4 +96,5 @@ module.exports = {
   createNewUser,
   updateUser,
   deleteUser,
+  searchUser,
 };

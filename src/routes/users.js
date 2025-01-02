@@ -27,4 +27,7 @@ router.delete(
   UserController.deleteUser
 );
 
+// note: Search / filter
+router.post("/search", UserController.searchUser);
+
 module.exports = router;
